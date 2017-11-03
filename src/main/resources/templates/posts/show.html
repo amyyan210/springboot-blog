@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/partials :: head">
+    <meta charset="UTF-8" />
+    <title>Post</title>
+</head>
+<body>
+
+<nav th:include="fragments/partials :: navbar"></nav>
+<header th:include="fragments/partials :: header"></header>
+
+<!-- will see error, intelliJ cannot relate controller to the view-->
+<h2 th:text="${post.title}"></h2>
+
+<p th:text="${post.body}"></p>
+
+<footer th:include="fragments/partials :: footer"></footer>
+<div th:include="fragments/partials :: scripts"></div>
+
+</body>
+</html>
