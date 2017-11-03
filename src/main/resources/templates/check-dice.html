@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Check Your Answer</title>
+</head>
+<body>
+
+<p>Your guess is: <span th:text="${userGuess}"></span>.</p>
+<p>The random number is: <span th:text="${randomNumber}"></span>.</p>
+
+<p th:if="${userGuess} == ${randomNumber}">Your guess was correct!</p>
+<p th:if="${userGuess} != ${randomNumber}">Your guess was not correct!</p>
+
+</body>
+</html>
