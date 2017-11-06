@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/partials :: head">
-    <meta charset="UTF-8" />
-    <title>Posts</title>
+<head th:include="fragments/partials :: head('Posts')">
 </head>
 <body>
 
@@ -12,7 +10,7 @@
 <h1>All Posts</h1>
 
 <!-- will see error, intelliJ cannot relate controller to the view-->
-<div th:each="post : ${listOfPosts}">
+<div th:each="post : ${posts}">
     <h2 th:text="${post.title}"></h2>
     <p th:text="${post.body}"></p>
 </div>
