@@ -16,7 +16,8 @@ public class PostsController {
 
     private final PostSvc postSvc;
 
-    @Autowired
+    @Autowired // Only necessary when you have more than one constructor
+    // Constructor injection
     public PostsController(PostSvc postSvc) {
         this.postSvc = postSvc;
     }

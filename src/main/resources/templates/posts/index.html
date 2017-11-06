@@ -11,7 +11,12 @@
 
 <!-- will see error, intelliJ cannot relate controller to the view-->
 <div th:each="post : ${posts}">
-    <h2 th:text="${post.title}"></h2>
+    <h2 th:text="${post.title}">
+        <a th:href="${'/posts/' + post.id}" th:text="${post.title}"></a>
+
+        <!-- Alternate solution -->
+        <!--<a th:href="@{/posts/{id}(id=${post.id})" th:text="${post.title}"></a>-->
+    </h2>
     <p th:text="${post.body}"></p>
 </div>
 
