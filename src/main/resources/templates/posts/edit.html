@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/partials :: head('Edit')">
+</head>
+<body>
+
+<nav th:include="fragments/partials :: navbar"></nav>
+
+<form th:action="${'/posts/' + post.id + '/edit'}" method="post" th:object="${post}">
+
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input th:field="*{title}" id="title" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="body">Description</label>
+        <input th:field="*{body}" id="body" type="text" class="form-control" autofocus="autofocus" />
+    </div>
+
+    <button type="submit" class="btn btn-default">Update</button>
+
+</form>
+
+<a th:href="@{/posts/{id}(id=${post.id})}">
+    <button class="btn btn-default">Cancel</button>
+</a>
+
+<div th:include="fragments/partials :: scripts"></div>
+</body>
+</html>

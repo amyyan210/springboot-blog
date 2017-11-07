@@ -5,17 +5,35 @@
 <body>
 
 <nav th:include="fragments/partials :: navbar"></nav>
-<header th:include="fragments/partials :: header"></header>
 
-<h1>All Posts</h1>
+<h1>All Posts
+    <a href="/posts/create">
+        <button class="btn btn-default">
+            <span class="glyph glyphicon-plus"></span>
+        </button>
+    </a>
+</h1>
 
 <!-- will see error, intelliJ cannot relate controller to the view-->
 <div th:each="post : ${posts}">
-    <h2 th:text="${post.title}"></h2>
+    <h2>
+        <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a>
+        <a th:href="@{/posts/{id}/edit(id=${post.id})}">
+            <button class="btn btn-default">
+                <span class="glyph glyphicon-pencil"></span>
+            </button>
+        </a>
+        <a th:href="@{/posts/{id}/delete(id=${post.id})}">
+            <button class="btn btn-default">
+                <span class="glyph glyphicon-minus"></span>
+            </button>
+        </a>
+
+        <!-- Alternate solution -->
+        <!--<a th:href="@{/posts/{id}(id=${post.id})" th:text="${post.title}"></a>-->
+    </h2>
     <p th:text="${post.body}"></p>
 </div>
-
-<footer th:include="fragments/partials :: footer"></footer>
 
 <div th:include="fragments/partials :: scripts"></div>
 </body>
