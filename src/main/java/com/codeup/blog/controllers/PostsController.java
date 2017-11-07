@@ -1,14 +1,13 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
+import com.codeup.blog.repositories.PostsRepository;
 import com.codeup.blog.services.PostSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 
 @Controller
@@ -19,6 +18,7 @@ public class PostsController {
     @Autowired // Only necessary when you have more than one constructor
     // Constructor injection
     public PostsController(PostSvc postSvc) {
+
         this.postSvc = postSvc;
     }
 
@@ -35,24 +35,52 @@ public class PostsController {
     }
 
     // not related to the path
-    @GetMapping("/show/{id}")
-    public String viewPost (@PathVariable long id, Model model) {
+    @GetMapping("/posts/{id}")
+    public String viewPost (@PathVariable Long id, Model model) {
 
         model.addAttribute("post", postSvc.findOne(id));
-
         // points to the path
         return "posts/show";
     }
 
-
     @GetMapping("/posts/create")
-    public String viewCreateForm () {
-        return "view the form for creating a post";
+    public String viewCreateForm (Model model) {
+
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String createPost () {
-        return "create a new post";
+//    @modelattribute connects to the form th:object
+    public String createPost (@ModelAttribute Post post) {
+        postSvc.save(post);
+
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String viewEditForm (Model model, @PathVariable Long id) {
+
+        model.addAttribute("post", postSvc.findOne(id));
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String editForm (@ModelAttribute Post post) {
+        postSvc.save(post);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("posts/{id}/delete")
+    public String viewDeleteForm (@PathVariable Long id, Model model) {
+        model.addAttribute("post", postSvc.findOne(id));
+        return "posts/delete";
+    }
+
+    @PostMapping("posts/{id}/delete")
+    public String deletePost (@ModelAttribute Post post) {
+        postSvc.delete(post);
+        return "redirect:/posts";
     }
 
 }

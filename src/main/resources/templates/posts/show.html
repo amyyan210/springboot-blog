@@ -5,16 +5,27 @@
 <body>
 
 <nav th:include="fragments/partials :: navbar"></nav>
-<header th:include="fragments/partials :: header"></header>
 
 <!-- will see error, intelliJ cannot relate controller to the view-->
 
 <div>
     <h2 th:text="${post.title}"></h2>
     <p th:text="${post.body}"></p>
+
+    <a th:href="@{/posts/{id}/edit(id=${post.id})}">
+        <button class="btn btn-default">
+            <span class="glyph glyphicon-pencil"></span>
+        </button>
+    </a>
+    <a th:href="@{/posts/{id}/delete(id=${post.id})}">
+        <button class="btn btn-default">
+            <span class="glyph glyphicon-minus"></span>
+        </button>
+    </a>
 </div>
 
-<footer th:include="fragments/partials :: footer"></footer>
+<a href="/posts"><p><span class="glyphicon glyphicon-arrow-left"></span> Go back to posts</p></a>
+
 <div th:include="fragments/partials :: scripts"></div>
 
 </body>
