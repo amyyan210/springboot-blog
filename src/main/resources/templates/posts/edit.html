@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/partials :: head('Edit')">
+<head th:replace="fragments/partials :: head('Edit')">
 </head>
 <body>
 
-<nav th:include="fragments/partials :: navbar"></nav>
+<nav th:replace="fragments/partials :: navbar"></nav>
 
 <form th:action="${'/posts/' + post.id + '/edit'}" method="post" th:object="${post}">
 

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/partials :: head('Posts')">
+<head th:replace="fragments/partials :: head('Posts')">
 </head>
 <body>
 
-<nav th:include="fragments/partials :: navbar"></nav>
+<nav th:replace="fragments/partials :: navbar"></nav>
 
 <h1>All Posts
     <a href="/posts/create">

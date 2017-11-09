@@ -20,9 +20,9 @@ public class PostSvc {
     }
 
 
-    public PostSvc() {
-        createDummy();
-    }
+//    public PostSvc() {
+//        createDummy();
+//    }
 
 //    retrieving all the posts
     // Iterable is super class of lists
@@ -46,19 +46,19 @@ public class PostSvc {
         return post;
     }
 
-    private void createDummy(){
-
-        save(new Post(
-                1L,
-                "Example 1",
-                "1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque commodi eligendi necessitatibus voluptates. At distinctio dolores minus molestiae mollitia nemo sapiente ut veniam voluptates! Corporis distinctio error quaerat vel!"
-        ));
-
-        save(new Post(
-                2L,
-                "Example 2",
-                "2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque commodi eligendi necessitatibus voluptates. At distinctio dolores minus molestiae mollitia nemo sapiente ut veniam voluptates! Corporis distinctio error quaerat vel!"
-        ));
-
-    }
+//    private void createDummy(){
+//
+//        save(new Post(
+//                1L,
+//                "Example 1",
+//                "1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque commodi eligendi necessitatibus voluptates. At distinctio dolores minus molestiae mollitia nemo sapiente ut veniam voluptates! Corporis distinctio error quaerat vel!"
+//        ));
+//
+//        save(new Post(
+//                2L,
+//                "Example 2",
+//                "2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque commodi eligendi necessitatibus voluptates. At distinctio dolores minus molestiae mollitia nemo sapiente ut veniam voluptates! Corporis distinctio error quaerat vel!"
+//        ));
+//
+//    }
 }

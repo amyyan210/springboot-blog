@@ -1,25 +1,25 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
-import com.codeup.blog.repositories.PostsRepository;
+import com.codeup.blog.models.User;
+import com.codeup.blog.repositories.UsersRepository;
 import com.codeup.blog.services.PostSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-
 @Controller
 public class PostsController {
 
     private final PostSvc postSvc;
+    private final UsersRepository usersRepository;
 
     @Autowired // Only necessary when you have more than one constructor
-    // Constructor injection
-    public PostsController(PostSvc postSvc) {
-
+    // Constructor injection - in order to be able to use the users properties / methods from the Post class
+    public PostsController(PostSvc postSvc, UsersRepository usersRepository) {
         this.postSvc = postSvc;
+        this.usersRepository = usersRepository;
     }
 
     // not related to the path
@@ -53,6 +53,9 @@ public class PostsController {
     @PostMapping("/posts/create")
 //    @modelattribute connects to the form th:object
     public String createPost (@ModelAttribute Post post) {
+        User user1 = usersRepository.findOne(1L);
+        post.setUser(user1);
+
         postSvc.save(post);
 
         return "redirect:/posts";

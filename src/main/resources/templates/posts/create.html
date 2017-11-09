@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/partials :: head('Create')">
+<head th:replace="fragments/partials :: head('Create')">
 </head>
 <body>
 
-<nav th:include="fragments/partials :: navbar"></nav>
+<nav th:replace="fragments/partials :: navbar"></nav>
 
-<form action="/posts/create" method="post" th:object="${post}">
+<form th:action="@{/posts/create}" method="post" th:object="${post}">
 
     <div class="form-group">
         <!--Use * when you in the parent element you have defined the th:object-->

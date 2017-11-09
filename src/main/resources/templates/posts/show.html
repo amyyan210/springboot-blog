@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/partials :: head('Post')">
+<head th:replace="fragments/partials :: head('Post')">
 </head>
 <body>
 
-<nav th:include="fragments/partials :: navbar"></nav>
+<nav th:replace="fragments/partials :: navbar"></nav>
 
 <!-- will see error, intelliJ cannot relate controller to the view-->
 
 <div>
     <h2 th:text="${post.title}"></h2>
     <p th:text="${post.body}"></p>
+    <p th:text="${post.user.email}"></p>
 
     <a th:href="@{/posts/{id}/edit(id=${post.id})}">
         <button class="btn btn-default">
